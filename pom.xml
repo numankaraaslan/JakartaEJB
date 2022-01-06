@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.numankaraaslan</groupId>
+	<artifactId>JakartaEJB</artifactId>
+	<version>0.0.1</version>
+	<packaging>war</packaging>
+
+	<name>JakartaEJB Maven Webapp</name>
+	<url>http://www.numankaraaslan.com</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>13</maven.compiler.source>
+		<maven.compiler.target>13</maven.compiler.target>
+	</properties>
+
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/jakarta.platform/jakarta.jakartaee-web-api -->
+		<!-- this is the new jakarta EE runtime, renamed from javax to jakarta in the version 9 -->
+		<dependency>
+			<groupId>jakarta.platform</groupId>
+			<artifactId>jakarta.jakartaee-api</artifactId>
+			<version>9.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
+		<!-- This is here to shut up the eclipse complaining about no "javax.servlet implementation found on classpath" in JSP files -->
+		<!-- This is already in TomEE, so it is provided and not included in the output war file -->
+		<dependency>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<version>5.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/jakarta.servlet.jsp.jstl/jakarta.servlet.jsp.jstl-api -->
+		<!-- This is important !! You need the java tag library processing in your JSP files -->
+		<!-- This is also not javax, it is jakarta from now on -->
+		<dependency>
+			<groupId>jakarta.servlet.jsp.jstl</groupId>
+			<artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.taglibs/taglibs-standard-impl -->
+		<!-- This one prevents the JSP files complaining about JSTL library not found, not sure it is mandatory though -->
+		<dependency>
+			<groupId>org.apache.taglibs</groupId>
+			<artifactId>taglibs-standard-impl</artifactId>
+			<version>1.2.5</version>
+			<scope>runtime</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core -->
+		<!-- Hibernate 6 is the jakarta package version, not javax.persistance anymore, it is jakarta.persistance -->
+		<dependency>
+			<groupId>org.hibernate.orm</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>6.0.0.Beta3</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.22</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.3.1</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>JakartaEJB</finalName>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<!-- i have specifically used a plugin and overriden it configuration -->
+					<!-- i have exported the war file to TomEE webapps directory to fire up automatic reload and deploy -->
+					<!-- this is because this project requires TomEE to run (not Tomcat 10) and i couldn't find TomEE for eclipse -->
+					<!-- Why not running on tomcat 10, even though they have renamed the javax packages to jakarta? -->
+					<!-- Honestly, not exactly sure but i think it has something to do with the EJB specifications -->
+					<artifactId>maven-war-plugin</artifactId>
+					<version>3.2.2</version>
+					<configuration>
+						<outputDirectory>C:\TomEE\webapps</outputDirectory>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>
