@@ -1,0 +1,25 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+	<display-name>Archetype Created Web Application</display-name>
+	<servlet>
+		<servlet-name>BookServlet</servlet-name>
+		<display-name>BookServlet</display-name>
+		<description>Book servlet</description>
+		<servlet-class>com.numankaraaslan.jakartaejb.servlet.BookServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<!-- you can't use (/book/*) because i have placed the book domain in the "book" folder, it causes infinite loop -->
+	<!-- that's why i have trimmed and configured the urls like below and redirected to .jsp files inside the servlet implementation -->
+	<!-- that's also why i have all the book pages mappings here, not ideal but a solution -->
+	<servlet-mapping>
+		<servlet-name>BookServlet</servlet-name>
+		<url-pattern>/book/addbook</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>BookServlet</servlet-name>
+		<url-pattern>/book/books</url-pattern>
+	</servlet-mapping>
+</web-app>
