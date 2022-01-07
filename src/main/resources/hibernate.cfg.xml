@@ -5,7 +5,8 @@
 		<p:property name="hibernate.connection.url">jdbc:postgresql://localhost:5433/EJB</p:property>
 		<p:property name="hibernate.connection.driver_class">org.postgresql.Driver</p:property>
 		<p:property name="hibernate.connection.username">postgres</p:property>
-		<p:property name="hibernate.connection.password">321321</p:property>
+		<!-- change the password -->
+		<p:property name="hibernate.connection.password">yourpassword</p:property>
 		<p:property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</p:property>
 		<!-- create, update, validate, create-drop -->
 		<p:property name="hibernate.hbm2ddl.auto">update</p:property>
