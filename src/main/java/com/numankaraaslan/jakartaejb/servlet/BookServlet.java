@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @Stateless
+// More info on stateless -> https://specialties.bayt.com/en/specialties/q/289787/what-are-the-differences-between-stateful-stateless-and-singleton-beans-when-to-use-each-of-them-giving-example-would-be-recommended/
 // Everything is jakarta.servlet package, not javax.servlet
 // The servlet configuration is in the web.xml file
 // The alternative approach would be like below
@@ -33,19 +34,19 @@ public class BookServlet extends HttpServlet
 		{
 			// this is http://localhost:8080/JakartaEJB/book/addbook
 			request.setAttribute("book", new Book());
-			// i can directly redirect to "addbook.jsp" even though it is in the "book" folder (see webapp folder)
-			// because i am already in the /book mappings (see web.xml)
+			// i can directly redirect to "addbook.jsp", not "book/addbook.jsp" even though it is in the "book" folder (see webapp folder)
+			// because i am already inside the /book mappings (see web.xml)
 			request.getRequestDispatcher("addbook.jsp").forward(request, response);
 		}
 		else if (request.getRequestURI().endsWith("/books"))
 		{
 			// this is http://localhost:8080/JakartaEJB/book/books
 			request.setAttribute("books", bookRepo.getBooks());
-			// i can directly redirect to "list.jsp" even though it is in the "book" folder (see webapp folder)
-			// because i am already in the /book mappings (see web.xml)
+			// i can directly redirect to "list.jsp", not "book/list.jsp" even though it is in the "book" folder (see webapp folder)
+			// because i am already inside the /book mappings (see web.xml)
 			request.getRequestDispatcher("list.jsp").forward(request, response);
 		}
-		// here "request.setAttribute" is actually "modelandview.addobject" in spring framework
+		// here "request.setAttribute" is actually "modelandview.addobject" method in spring framework
 	}
 
 	@Override

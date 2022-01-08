@@ -7,6 +7,7 @@
 <title>Spring JSP demo</title>
 </head>
 <body>
+	<!-- going one level up in the folder structure ../index.jsp -->
 	<a href="../index.jsp">home</a>
 	<a href="books">books</a>
 	<a href="addbook">add</a>

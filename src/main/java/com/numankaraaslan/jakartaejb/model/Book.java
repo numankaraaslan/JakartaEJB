@@ -11,7 +11,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-// all packages are jakarta.persistence not javax.persistance
+// this entity could have been a Bean but i think it is old school
+// all packages are jakarta.persistence not javax.persistance !!
 @Getter
 @Setter
 @AllArgsConstructor
@@ -19,7 +20,7 @@ import lombok.Setter;
 @Entity
 // this is a hibernate managed entity
 // \"JakartaEE\" is the schema name and \"Book\" is the table name
-// if you are using postgresql, you need the queries like create table "jakartaee"."obs" with double quotes
+// if you are using postgresql, you need the queries like create table "jakartaee"."book" with double quotes
 // that's why i have to use \" on schema and table names
 @Table(schema = "\"JakartaEE\"", name = "\"Book\"")
 //Remember to create "JakartaEE" schema in posgtresql database
@@ -27,7 +28,7 @@ import lombok.Setter;
 public class Book
 {
 	@Id
-	// Identity works nice with postgresql and every table will have their own sequence
+	// GenerationType.IDENTITY works nice with postgresql and every table will have their own sequence
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 

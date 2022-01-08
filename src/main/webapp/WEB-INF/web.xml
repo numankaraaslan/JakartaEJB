@@ -4,6 +4,8 @@
 
 <web-app>
 	<display-name>Archetype Created Web Application</display-name>
+	<!-- I don't have BookServlet-servlet.xml in this project like in spring framework -->
+	<!-- It is possible to create an ejb-jar.xml file, but i think it is old school -->
 	<servlet>
 		<servlet-name>BookServlet</servlet-name>
 		<display-name>BookServlet</display-name>
@@ -13,7 +15,7 @@
 	</servlet>
 	<!-- you can't use (/book/*) because i have placed the book domain in the "book" folder, it causes infinite loop -->
 	<!-- that's why i have trimmed and configured the urls like below and redirected to .jsp files inside the servlet implementation -->
-	<!-- that's also why i have all the book pages mappings here, not ideal but a solution -->
+	<!-- that's also why i have all the book pages mappings here, this is not ideal but it is a solution -->
 	<servlet-mapping>
 		<servlet-name>BookServlet</servlet-name>
 		<url-pattern>/book/addbook</url-pattern>

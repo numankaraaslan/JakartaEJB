@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<groupId>com.numankaraaslan</groupId>
 	<artifactId>JakartaEJB</artifactId>
 	<version>0.0.1</version>
 	<packaging>war</packaging>
-
 	<name>JakartaEJB Maven Webapp</name>
 	<url>http://www.numankaraaslan.com</url>
-
 	<properties>
+		<!-- There might be a minimum java requirement for this project !! -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>13</maven.compiler.source>
 		<maven.compiler.target>13</maven.compiler.target>
 	</properties>
-	<!-- this project requires TomEE to run (not Tomcat 10) and i couldn't find TomEE for eclipse -->
+	<!-- this project requires TomEE to run (not Tomcat 10) -->
+	<!-- You can create TomEE server in eclipse by creating a tomcat 1 server and pointing the tomee server -->
 	<!-- Why not running on tomcat 10, even though they have renamed the javax packages to jakarta? -->
 	<!-- Honestly, not exactly sure but i think it has something to do with the EJB specifications -->
+	<!-- Ideally you would need Payara server. It is the new glassfish server with jakarta namespace -->
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/jakarta.platform/jakarta.jakartaee-web-api -->
 		<!-- this is the new jakarta EE runtime, renamed from javax to jakarta in the version 9 -->
@@ -78,6 +77,8 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
+					<!-- You can use EAR plugin to create a modular project but it would becoma a monolithic project -->
+					<!-- Why create a monolithic project in 2022 ? -->
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-war-plugin</artifactId>
 					<version>3.3.1</version>
