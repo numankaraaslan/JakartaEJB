@@ -33,7 +33,6 @@ public class BookServlet extends HttpServlet
 		if (request.getRequestURI().endsWith("/addbook"))
 		{
 			// this is http://localhost:8080/JakartaEJB/book/addbook
-			request.setAttribute("book", new Book());
 			// i can directly redirect to "addbook.jsp", not "book/addbook.jsp" even though it is in the "book" folder (see webapp folder)
 			// because i am already inside the /book mappings (see web.xml)
 			request.getRequestDispatcher("addbook.jsp").forward(request, response);
@@ -61,5 +60,4 @@ public class BookServlet extends HttpServlet
 			response.sendRedirect("addbook.jsp");
 		}
 	}
-
 }

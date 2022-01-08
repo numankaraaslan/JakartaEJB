@@ -13,7 +13,7 @@ import com.numankaraaslan.jakartaejb.model.Book;
 //NOT @jakarta.inject.Singleton
 public class BookRepo
 {
-	public BeanFactory factory;
+	private BeanFactory factory;
 
 	// @PersistenceContext didn't work here
 	// Because i was unable to create sessionfactory bean
